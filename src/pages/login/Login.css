@@ -1,0 +1,77 @@
+.login-container{
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-container-login{
+    position: fixed;
+    top: 30%;
+    left: 40%;
+    min-width: 20%;
+    max-width: 30%;
+    min-height: 28%;;
+    max-height: 30%;
+    background-color:rgba(245, 245, 245, 0.733);
+    padding: 25px;
+    color: rgba(33, 33, 33, 0.867);
+    border-radius:6px;
+    padding:0px 0px 70px 0px;
+    border: whitesmoke 1px solid; 
+}
+
+.login-form{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.button{
+  background:rgba(128, 57, 57, 0.689);
+  width:125px;
+  padding-top:5px;
+  padding-bottom:5px;
+  color:white;
+  border-radius:4px;
+  border: rgba(128, 57, 57, 0.689) 1px solid;
+  margin-top:20px;
+  margin-bottom:20px;
+  font-weight:800;
+  font-size:0.8em;
+  
+}
+
+
+
+.button:hover{
+  background:rgb(128, 57, 57); 
+}
+
+
+.form-group{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.label{
+    margin-bottom: 5px;
+}
+
+.cadastro{
+    position: fixed;
+    top: 65%;
+    left: 47.1%;
+    padding-top:5px;
+    padding-bottom:5px;
+}
