@@ -1,22 +1,28 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styles from './Navbar.module.css'
+import logo from '../../images/Icone.png'
 
 const Navbar = () => {
     return (
         <nav className={styles.navbar}>
-            <NavLink to="/" style={({ isActive }) => ({ color: isActive ? 'white' : 'white' })} className='buttonNav'>
-                Pizza Pra Galera
+            <NavLink to="/">
+                <img src={logo} alt='Logo' className={styles.img}/>
             </NavLink>
             <ul className={styles.links_list}>
                 <li>
-                    <NavLink to="/sabores" style={({ isActive }) => ({ color: isActive ? 'white' : 'white' })} className='buttonNav'>
+                    <NavLink to="/sabores" className={styles.item} >
                         Cardápio
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/login" style={({ isActive }) => ({ color: isActive ? 'white' : 'white' })} className='buttonNav'>
+                    <NavLink to="/login" className={styles.item}  >
                         Entrar
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/Carrinho" className={styles.item}  >
+                        Carrinho
                     </NavLink>
                 </li>
 

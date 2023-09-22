@@ -7,7 +7,7 @@ import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import PizzaButton from './Components/PizzaButton/PizzaButton';
 import BaseLayout from './Layout/BaseLayout/BaseLayout'
-import { Carrinho } from './pages/Carrinho/Carrinho';
+import { Carrinho } from './pages/carrinho/Carrinho';
 import PizzasData from './data/PizzasData'
 
 
@@ -21,6 +21,7 @@ function App() {
             <Route path="/sabores" element={<SaboresPizza/>} />
             <Route path="/register" element={<Register/>} />
             <Route path="/login" element={<Login/>} />
+            <Route path="carrinho" element={<Carrinho/>} />
         
       </Routes>
     </Router>

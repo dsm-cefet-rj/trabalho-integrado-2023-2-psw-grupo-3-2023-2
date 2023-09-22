@@ -14,3 +14,5 @@ export const Carrinho = () => {
         </>
     )
 }
+
+export default Carrinho

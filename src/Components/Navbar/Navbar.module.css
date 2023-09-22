@@ -3,10 +3,17 @@
     box-shadow: rgba(0, 0, 0, 0.15) 0px -2px 10px 0px;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5em 2em;
+    padding: 1em 2em;
     max-height: 4vh;
     background-color: rgb(159, 49, 51);
     border-bottom: rgba(245, 245, 245, 0.851) 1px solid;
+}
+
+.img{
+    max-width: 4m;
+    max-height: 4em;
+    width: auto;
+    height: auto;
 }
 
 .brand {
@@ -25,16 +32,16 @@
 
 .links_list li {
     margin-right: 1em;
+    color: #fff;
+    text-decoration: none;
 }
 
 .links_list li a {
     padding: 0.4em 0.6em;
-}
-
-.active {
     color: #fff;
+    text-decoration: none;
 }
 
-.buttonNav{
-    text-decoration: none;
+.links_list li a:hover {
+    color:rgba(226, 194, 155)
 }
