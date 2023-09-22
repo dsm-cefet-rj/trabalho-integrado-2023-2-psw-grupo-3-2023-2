@@ -11,7 +11,7 @@ const Navbar = () => {
             </NavLink>
             <ul className={styles.links_list}>
                 <li>
-                    <NavLink to="/sabores" className={styles.item} >
+                    <NavLink to="/tamanhos" className={styles.item} >
                         Cardápio
                     </NavLink>
                 </li>

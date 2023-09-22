@@ -1,15 +1,7 @@
-body {
-  background-image: url('../background-pizza.jpeg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
-
 .page-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column; /* Alinhar os elementos verticalmente */
+  align-items: flex-start; /* Alinhar o conteúdo à esquerda */
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -22,10 +14,24 @@ body {
 
 .sabores_title {
   margin-top: 0;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.list-sizes {
+  list-style-type: none;
+  display: flex; /* Dispor os botões horizontalmente */
+  justify-content: space-between; /* Espaçamento entre os botões */
+  flex-wrap: wrap; /* Permite que os botões quebrem para a próxima linha quando não couberem horizontalmente */
+  padding: 0; /* Remover o preenchimento da lista */
+  margin: 0; /* Remover a margem da lista */
 }
 
 .button-container {
   display: flex;
-  bottom: 10px;
-  right: 10px;
+  justify-content: space-between; /* Alinhar os botões à direita */
+  gap: 10px; /* Espaço entre os botões */
+  position: absolute;
+  bottom: 10px; /* Alinhar os botões na parte inferior */
+  right: 10px; /* Alinhar os botões à direita */
 }
