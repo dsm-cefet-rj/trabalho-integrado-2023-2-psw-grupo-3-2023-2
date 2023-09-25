@@ -1,37 +1,41 @@
+/* Atualize estas regras de estilo */
 .page-container {
   display: flex;
-  flex-direction: column; /* Alinhar os elementos verticalmente */
-  align-items: flex-start; /* Alinhar o conteúdo à esquerda */
+  flex-direction: column;
+  align-items: flex-start;
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   width: 700px;
-  height: 500px;
+  min-height: 600px; /* Aumente a altura mínima para acomodar os botões e evitar sobreposição */
   margin: 150px auto;
   padding: 20px;
   position: relative;
 }
 
-.sabores_title {
+.sabores-title {
   margin-top: 0;
   font-size: 2em;
   font-weight: bold;
 }
 
-.list-sizes {
-  list-style-type: none;
-  display: flex; /* Dispor os botões horizontalmente */
-  justify-content: space-between; /* Espaçamento entre os botões */
-  flex-wrap: wrap; /* Permite que os botões quebrem para a próxima linha quando não couberem horizontalmente */
-  padding: 0; /* Remover o preenchimento da lista */
-  margin: 0; /* Remover a margem da lista */
+.sabores-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
+/* Estilos para o container dos botões no canto inferior direito */
 .button-container {
   display: flex;
-  justify-content: space-between; /* Alinhar os botões à direita */
-  gap: 10px; /* Espaço entre os botões */
+  justify-content: flex-end; /* Alinhar os botões à direita */
+  gap: 10px;
   position: absolute;
-  bottom: 10px; /* Alinhar os botões na parte inferior */
-  right: 10px; /* Alinhar os botões à direita */
+  bottom: 10px;
+  right: 10px;
+}
+
+/* Estilos para os botões "Ir para Tamanhos de Pizza" e "Confirmar" */
+.button-container button {
+  margin: 0;
 }

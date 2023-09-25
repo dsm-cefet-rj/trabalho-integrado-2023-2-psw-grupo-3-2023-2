@@ -1,18 +1,24 @@
 .pizza-button {
     border: 1px solid #ccc;
     padding: 10px;
-    margin: 10px;
+    margin: 5px; /* Reduzi a margem para evitar que os botões fiquem muito afastados */
     background-color: #fff;
     text-align: left;
-    width: 200px;
-}
-
-.pizza-button h3 {
+    width: 100%; /* Use 100% da largura disponível para ocupar toda a largura do container */
+  }
+  
+  .pizza-button h3 {
     margin: 0;
     font-size: 18px;
-}
-
-.pizza-button p {
+  }
+  
+  .pizza-button p {
     margin: 5px 0;
     font-size: 14px;
-}
+  }
+  
+  /* Adicione um estilo para quando o botão estiver selecionado */
+  .pizza-button.selected {
+    border: 2px solid green; /* Você pode ajustar o estilo da borda conforme necessário */
+  }
+  

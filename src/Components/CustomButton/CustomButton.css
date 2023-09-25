@@ -1,18 +1,19 @@
-.button{
-    background:rgba(128, 57, 57, 0.689);
-    width:125px;
-    padding-top:5px;
-    padding-bottom:5px;
-    color:white;
-    border-radius:4px;
-    border: rgba(128, 57, 57, 0.689) 1px solid;
-    margin-top:20px;
-    margin-bottom:20px;
-    font-weight:800;
-    font-size:0.8em;
-    text-decoration: none;
-  }
+.button {
+  background: rgba(128, 57, 57, 0.689);
+  width: 125px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: white;
+  border-radius: 4px;
+  border: rgba(128, 57, 57, 0.689) 1px solid;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: 800;
+  font-size: 0.8em;
+  text-decoration: none;
+  text-align: center;
+}
 
-  .button:hover{
-    background:rgb(128, 57, 57); 
-  }
+.button:hover {
+  background: rgb(128, 57, 57);
+}

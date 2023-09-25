@@ -5,12 +5,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("https://v5.airtableusercontent.com/v1/21/21/1695362400000/RX5bIN0L0tPOBG4sbsyTWg/yUXy5bbz1MPYeUmnpY9xe8ZfHJ8fRLBFVnFY9caB36SCOhmuunb747nsox9Uiafy11x7Mxuv1a43vK6Nr8j9FQ/zlbhqwUeXqM24KsLmfIlhS3vO4_f7FatleuV07_JZB8");
+  background-image: url(./images/PizzaBackground.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  margin: 0; /* Remover margens padrão do body */
-  padding: 0; /* Remover preenchimento padrão do body */
+  margin: 0;
+  padding: 0;
 }
 
 code {
