@@ -34,7 +34,7 @@ const Register = () => {
     }
     if (senha !== confirmSenha) {
       isproceed = false;
-      toast.error('Senhas diferentes');
+      errormessage += ' confirmar senha';
     }
 
     if (!isproceed) {

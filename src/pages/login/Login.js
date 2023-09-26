@@ -85,13 +85,12 @@ export const Login = () => {
         <h1>Login</h1>
         <form id="login-form" onSubmit={ProceedLogin}>
           <Input type='email' text='E-mail' name='usuário' placeholder='E-mail' required='required' value={email} handleOnChange={e => setEmail(e.target.value)} />
-          <Input type='senha' text='Senha' name='senha' placeholder='Senha' required='required' value={senha} handleOnChange={e => setSenha(e.target.value)}/>
+          <Input type='password' text='Senha' name='senha' placeholder='Senha' required='required' value={senha} handleOnChange={e => setSenha(e.target.value)}/>
           <CustomButton type="submit">Entrar</CustomButton>
-
-          <NavLink to="/register" style={({ isActive }) => ({ color: isActive ? 'greenyellow' : 'rgba(33, 33, 33, 0.867)' })} className="cadastro">
+        </form>
+        <NavLink to="/register" style={({ isActive }) => ({ color: isActive ? 'greenyellow' : 'rgba(33, 33, 33, 0.867)' })} className="cadastro">
             Registrar-se
           </NavLink>
-        </form>
       </div>
     </div>
   )

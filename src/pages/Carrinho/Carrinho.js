@@ -1,6 +1,7 @@
 import React from 'react';
 import useStore from '../../Components/Store/Store';
 import './Carrinho.css';
+import { NavLink } from 'react-router-dom';
 
 function Carrinho() {
   const tamanhoSelecionado = useStore((state) => state.tamanhoSelecionado);
