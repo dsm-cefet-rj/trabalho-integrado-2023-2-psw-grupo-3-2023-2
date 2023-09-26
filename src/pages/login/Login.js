@@ -14,10 +14,10 @@ export const Login = () => {
           <Input type='text' text='Usuário' name='usuário' placeholder='Usuário' required='required' />
           <Input type='password' text='Senha' name='senha' placeholder='Senha' required='required' />
           <CustomButton type="submit">Entrar</CustomButton>
-          <NavLink to="/register" style={({ isActive }) => ({ color: isActive ? 'greenyellow' : 'rgba(33, 33, 33, 0.867)' })} className="cadastro">
-            Registrar-se
-          </NavLink>
         </form>
+        <NavLink to="/register" style={({ isActive }) => ({ color: isActive ? 'greenyellow' : 'rgba(33, 33, 33, 0.867)' })} className="cadastro">
+          Registrar-se
+        </NavLink>
       </div>
     </div>
   )

@@ -1,43 +1,31 @@
-.login-container{
-    height: 90%;
+.login-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-}
-
-.form-container-login{
-    position: fixed;
-    text-align:center;
-    top: 30%;
-    left: 40%;
-    min-width: 20%;
-    max-width: 30%;
-    min-height: 28%;;
-    max-height: 30%;
-    background-color:rgba(245, 245, 245, 0.733);
+    align-items: center;
+    height: 100vh; /* Defina a altura para ocupar toda a altura da tela */
+  }
+  
+  .form-container-login {
+    text-align: center;
+    min-width: 300px; /* Define a largura mínima do formulário */
+    max-width: 80%; /* Define a largura máxima do formulário */
+    background-color: rgba(245, 245, 245, 0.733);
     padding: 25px;
     color: rgba(33, 33, 33, 0.867);
-    border-radius:6px;
-    padding:0px 0px 70px 0px;
-    border: whitesmoke 1px solid; 
-}
-
-.loginform{
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 10px;
-}
-
-.cadastro{
-    position: fixed;
-    top: 65%;
-    left: 47.1%;
-    padding-top:5px;
-    padding-bottom:5px;
-}
+    border-radius: 6px;
+    border: whitesmoke 1px solid;
+  }
+  
+  /* Adicione media queries para ajustar o layout em telas menores */
+  @media (max-width: 768px) {
+    .form-container-login {
+      min-width: 80%; /* Ajuste a largura mínima para telas menores */
+    }
+  
+    .cadastro {
+      left: 50%; /* Centralize o link de registro horizontalmente */
+      transform: translateX(-50%);
+      top: auto; /* Remova a posição fixa no topo */
+    }
+  }
+  
