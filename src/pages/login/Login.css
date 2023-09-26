@@ -8,6 +8,7 @@
 
 .form-container-login{
     position: fixed;
+    text-align:center;
     top: 30%;
     left: 40%;
     min-width: 20%;
