@@ -52,18 +52,18 @@ const Register = () => {
     e.preventDefault();
     let regobj = { nome, email, senha, celular, rua, numero};
     console.log(regobj)
-    // if (IsValidate()) {
-    // fetch("http://localhost:3000/user", {
-    //     method: "POST",
-    //     headers: { 'content-type': 'application/json' },
-    //     body: JSON.stringify(regobj)
-    // }).then((res) => {
-    //     toast.success('Registered successfully.')
-    //     navigate('/login');
-    // }).catch((err) => {
-    //     toast.error('Failed :' + err.message);
-    // });
-}
+    if (IsValidate()) {
+    fetch("http://localhost:8000/users", {
+        method: "POST",
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(regobj)
+    }).then((res) => {
+        toast.success('Registrado com sucesso.')
+        navigate('/login');
+    }).catch((err) => {
+        toast.error('Erro :' + err.message);
+    });
+  }}
 
   return (
     <div className="register-container">
