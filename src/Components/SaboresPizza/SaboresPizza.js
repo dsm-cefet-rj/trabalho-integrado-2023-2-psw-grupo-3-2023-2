@@ -40,7 +40,7 @@ function SaboresPizza() {
         })}
       </div>
 
-      {/* Mover os botões para o canto inferior direito */}
+
       <div className="button-container">
         <CustomButton to="/tamanhos">Ir para Tamanhos de Pizza</CustomButton>
         <CustomButton to="/carrinho" className="button">Confirmar</CustomButton>

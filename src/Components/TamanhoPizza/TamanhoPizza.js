@@ -4,17 +4,17 @@ import CustomButton from '../CustomButton/CustomButton';
 import useStore from '../Store/Store';
 
 function TamanhoPizza() {
-  const tamanhoSelecionado = useStore((state) => state.tamanhoSelecionado); // Obtenha o tamanho selecionado do store
+  const tamanhoSelecionado = useStore((state) => state.tamanhoSelecionado);
   const setSelectedTamanho = useStore((state) => state.setSelectedTamanho);
 
   const handleTamanhoClick = (tamanho) => {
-    setSelectedTamanho(tamanho); // Defina o tamanho selecionado no store
+    setSelectedTamanho(tamanho);
   };
 
   return (
     <div className="page-container">
       <h2 className="sabores_title">Selecione o Tamanho da Pizza:</h2>
-      <ul className='list-sizes sabores-grid'> {/* Adicione a classe sabores-grid aqui */}
+      <ul className='list-sizes sabores-grid'>
         <li>
           <button onClick={() => handleTamanhoClick('30cm')} className={`sizeButton ${tamanhoSelecionado === '30cm' ? 'selected' : ''}`}>30cm</button>
         </li>
@@ -32,7 +32,6 @@ function TamanhoPizza() {
         </li>
       </ul>
 
-      {/* Exibir o tamanho selecionado do store */}
       {tamanhoSelecionado && (
         <p>Tamanho selecionado: {tamanhoSelecionado}</p>
       )}

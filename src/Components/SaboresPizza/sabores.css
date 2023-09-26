@@ -1,4 +1,3 @@
-/* Atualize estas regras de estilo */
 .page-container {
   display: flex;
   flex-direction: column;
@@ -7,7 +6,7 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   width: 700px;
-  min-height: 600px; /* Aumente a altura mínima para acomodar os botões e evitar sobreposição */
+  min-height: 600px;
   margin: 150px auto;
   padding: 20px;
   position: relative;
@@ -28,7 +27,7 @@
 /* Estilos para o container dos botões no canto inferior direito */
 .button-container {
   display: flex;
-  justify-content: flex-end; /* Alinhar os botões à direita */
+  justify-content: flex-end;
   gap: 10px;
   position: absolute;
   bottom: 10px;
