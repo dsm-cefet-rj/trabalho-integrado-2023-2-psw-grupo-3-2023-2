@@ -1,0 +1,22 @@
+.footer {
+    text-align: center;
+    background-color: rgb(159, 49, 51);
+    color: white;
+    padding: 1.5em 4em; 
+    margin-top: 20px; 
+    border-top: rgba(245, 245, 245, 0.851) 1px solid;
+  }
+  
+  .rodape_titulo {
+    font-size: 1em;
+    margin: 0;
+  }
+  
+  .rodape_titulo b {
+    color: white;
+  }
+ 
+  hr {
+    display: none;
+  }
+  

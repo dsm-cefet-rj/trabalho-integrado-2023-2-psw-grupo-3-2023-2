@@ -1,14 +1,15 @@
 import React from 'react'
 import './Home.css'
 import { NavLink } from 'react-router-dom'
+import HomePizza from '../../images/PizzaHome.png'
 
 export const Home = () =>{
     return(
         <div className='home_container'>
-            <img src='../../images/PizzaHome.png' alt='pizza'/>
-            <h1>Pizzas Salgadas</h1>
+            <img src={HomePizza} alt='pizza'/>
+            <h1>PIZZAS SALGADAS</h1>
             <NavLink to='/tamanhos' className='home_button'>
-                Ver tudo ➞
+                <b>VER TODOS ➞</b>
             </NavLink>
         </div>
     )

@@ -2,13 +2,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Defina a altura para ocupar toda a altura da tela */
-  }
-  
+    height: 100vh; 
+}
+
   .form-container-login {
     text-align: center;
-    min-width: 300px; /* Define a largura mínima do formulário */
-    max-width: 80%; /* Define a largura máxima do formulário */
+    min-width: 300px; 
+    max-width: 80%; 
     background-color: rgba(245, 245, 245, 0.733);
     padding: 25px;
     color: rgba(33, 33, 33, 0.867);
@@ -16,16 +16,16 @@
     border: whitesmoke 1px solid;
   }
   
-  /* Adicione media queries para ajustar o layout em telas menores */
+  
   @media (max-width: 768px) {
     .form-container-login {
-      min-width: 80%; /* Ajuste a largura mínima para telas menores */
+      min-width: 80%; 
     }
   
     .cadastro {
-      left: 50%; /* Centralize o link de registro horizontalmente */
+      left: 50%;
       transform: translateX(-50%);
-      top: auto; /* Remova a posição fixa no topo */
+      top: auto; 
     }
   }
   

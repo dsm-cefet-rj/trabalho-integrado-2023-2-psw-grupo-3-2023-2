@@ -1,24 +1,35 @@
-.home_container{
-    position: fixed;
-    top: 300px;
-    width: 1500px;
-    height: 1000px;
-    background-color:rgba(245, 245, 245, 0.733);
-    padding: 25px;
-    color: rgba(33, 33, 33, 0.867);
-    border-radius:6px;
-    border: whitesmoke 1px solid; 
-}
-
-.img{
-    max-width: 400px;
-    max-height: 400px;
-    width: auto;
-    height: auto;
-}
-
-.home_button{
+.home_container {
+    display: flex;
+    align-items: center;
+    background-color: rgba(245, 245, 245, 0.733);
+    padding: 50px;
+    margin-top: 140px; 
+    margin-bottom: 140px;
+    font-family: 'Bebas Neue', sans-serif; 
+  }
+  
+  img {
+    width: 20%; 
+    margin-right: 20px; 
+  }
+  
+  h1 {
+    flex-grow: 1; 
+    text-align: center;
+    font-size: 46px;
+  }
+  
+  .home_button {
+    padding: 10px 20px; 
+    border-radius: 4px;
+    color: rgb(159, 49, 51); 
     text-decoration: none;
-    color: rgb(159, 49, 51);
+    transition: transform 0.2s;
     font-size: 30px;
-}
+  }
+  
+  .home_button:hover {
+    transform: scale(1.1); 
+    background: transparent; 
+  }
+
