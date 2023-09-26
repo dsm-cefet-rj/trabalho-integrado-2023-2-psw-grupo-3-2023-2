@@ -19,5 +19,5 @@
 
 /* Estilo para quando o botão estiver selecionado */
 .pizza-button.selected {
-    border: 2px solid green;
+    border: 3px solid green;
 }
