@@ -42,7 +42,8 @@ function SaboresPizza() {
 
 
       <div className="button-container">
-        <CustomButton to="/tamanhos">Ir para Tamanhos de Pizza</CustomButton>
+        <CustomButton to="/tamanhos">Voltar para Tamanhos de Pizza</CustomButton>
+        <CustomButton to="/Ingredientes">Adionar Ingredientes Extras</CustomButton>
         <CustomButton to="/carrinho" className="button">Confirmar</CustomButton>
       </div>
     </div>
