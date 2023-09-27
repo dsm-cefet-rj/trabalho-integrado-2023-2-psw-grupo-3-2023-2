@@ -36,7 +36,7 @@ const enderecosSalvos = [
     }
   ];
   
-  const paymentOptions = ['Cartão', 'Boleto', 'Pix'];
+
 
 const Pagamento = () => {
   const [showAddressSection, setShowAddressSection] = useState(false);
@@ -159,6 +159,8 @@ const Pagamento = () => {
     );
   };
 
+  const paymentOptions = ['Cartão', 'Boleto', 'Pix'];
+
   const renderPaymentSection = () => {
     return (
       <div className="payment-section">
@@ -190,7 +192,7 @@ const Pagamento = () => {
     return (
       <div className="value-total">
         <span className="bold">Valor Total:</span>
-        <span className="bold">R$ 1000,00</span>
+        <span className="bold">R$ 25,00</span>
       </div>
     );
   };

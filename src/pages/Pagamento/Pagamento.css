@@ -37,7 +37,7 @@
   
   .expand-button button {
     width: 100%;
-    padding: 12px; /* Ajuste o padding para alterar a largura */
+    padding: 20px; 
     font-size: 16px;
     border: none;
     cursor: pointer;
@@ -89,11 +89,11 @@
   
   .endereco-descricao {
     font-weight: bold;
-    font-size: 16px; /* Ajuste o tamanho da fonte */
+    font-size: 14px; 
   }
   
   .endereco-texto {
-    font-size: 14px;
+    font-size: 12px;
   }
   
   .new-address-form form {
@@ -107,7 +107,7 @@
   }
   
   .right-section .payment-section .expand-button button {
-    width: 100%; /* Botão "Selecionar" agora com 100% de largura */
+    width: 100%; 
   }
   
   .right-section .payment-section .expand-button button:last-child {
