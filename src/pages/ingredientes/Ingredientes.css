@@ -1,0 +1,40 @@
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 700px;
+    min-height: 600px;
+    margin: 150px auto;
+    padding: 20px;
+    position: relative;
+  }
+  
+  .ingredientes-title {
+    margin-top: 0;
+    font-size: 2em;
+    font-weight: bold;
+  }
+  
+  .ingredientes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  /* Estilos para o container dos botões no canto inferior direito */
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  /* Estilos para os botões "Ir para Tamanhos de Pizza" e "Confirmar" */
+  .button-container button {
+    margin: 0;
+  }
