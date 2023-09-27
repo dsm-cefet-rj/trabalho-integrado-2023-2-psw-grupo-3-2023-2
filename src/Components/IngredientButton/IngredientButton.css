@@ -1,0 +1,23 @@
+.ingredient-button {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px;
+    background-color: #fff;
+    text-align: left;
+    width: 100%;
+}
+
+.ingredient-button h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.ingredient-button p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+/* Estilo para quando o botão estiver selecionado */
+.ingredient-button.selected {
+    border: 3px solid green;
+}
