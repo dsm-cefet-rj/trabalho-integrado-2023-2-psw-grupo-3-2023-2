@@ -7,14 +7,13 @@ import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import PizzaButton from './Components/PizzaButton/PizzaButton';
 import BaseLayout from './Layout/BaseLayout/BaseLayout'
-import Carrinho  from './pages/carrinho/Carrinho';
+import Carrinho  from './pages/Carrinho/Carrinho';
 import Home from './pages/home/Home';
 import PizzasData from './data/PizzasData'
 import Footer from './Components/Footer/footer';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-
+import Pagamento from './pages/Pagamento/Pagamento';
 
 function App() {
   return (
@@ -26,6 +25,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="carrinho" element={<Carrinho />} />
+        <Route path="/pagamento" element={<Pagamento/>}/>
         <Route path="/" element={<Home />} />
       </Routes>
       <Footer />

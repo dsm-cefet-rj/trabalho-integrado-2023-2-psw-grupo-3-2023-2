@@ -1,0 +1,132 @@
+.page-container {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+  }
+  
+  .left-section,
+  .right-section {
+    flex: 1;
+  }
+  
+  .value-total {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 24px;
+  }
+  
+  .address-section,
+  .payment-section {
+    margin-top: 20px;
+  }
+  
+  .header {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .expand-button {
+    width: 100%;
+  }
+  
+  .expand-button button {
+    width: 100%;
+    padding: 12px; /* Ajuste o padding para alterar a largura */
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .expand-button button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .payment-options {
+    display: none;
+  }
+  
+  .payment-options ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .payment-options li {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .payment-options li:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .payment-options.show {
+    display: block;
+  }
+  
+  .endereco-salvo {
+    cursor: pointer;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .endereco-salvo.selected {
+    background-color: #f0f0f0;
+  }
+  
+  .endereco-salvo p {
+    margin: 0;
+  }
+  
+  .endereco-descricao {
+    font-weight: bold;
+    font-size: 16px; /* Ajuste o tamanho da fonte */
+  }
+  
+  .endereco-texto {
+    font-size: 14px;
+  }
+  
+  .new-address-form form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .new-address-form input,
+  .new-address-form button {
+    margin-bottom: 10px;
+  }
+  
+  .right-section .payment-section .expand-button button {
+    width: 100%; /* Botão "Selecionar" agora com 100% de largura */
+  }
+  
+  .right-section .payment-section .expand-button button:last-child {
+    margin-right: 0;
+  }
+  
+  .buttons-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .buttons-container button {
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .buttons-container button:hover {
+    background-color: #f0f0f0;
+  }

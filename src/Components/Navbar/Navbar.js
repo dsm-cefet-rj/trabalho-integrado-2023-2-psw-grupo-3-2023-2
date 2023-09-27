@@ -25,7 +25,11 @@ const Navbar = () => {
                         Carrinho
                     </NavLink>
                 </li>
-
+                <li>
+                    <NavLink to="/Pagamento" className={styles.item}  >
+                        Pagamento
+                    </NavLink>
+                </li>
             </ul>
 
         </nav>
