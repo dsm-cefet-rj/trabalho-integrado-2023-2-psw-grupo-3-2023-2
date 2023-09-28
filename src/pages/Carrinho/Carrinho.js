@@ -13,7 +13,7 @@ function Carrinho() {
 
   if (!saborSelecionado) {
     return (
-      <div className="page-container">
+      <div className="page-containerC">
         <h1>Carrinho</h1>
         <p>Nenhuma pizza selecionada no carrinho.</p>
       </div>
@@ -24,7 +24,7 @@ function Carrinho() {
 
   if (!sabor) {
     return (
-      <div className="page-container">
+      <div className="page-containerC">
         <h1>Carrinho</h1>
         <p>Sabor selecionado não encontrado.</p>
       </div>

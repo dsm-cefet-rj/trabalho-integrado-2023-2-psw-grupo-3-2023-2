@@ -1,4 +1,4 @@
-.page-container {
+.page-containerT {
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -17,6 +17,12 @@
   margin-top: 0;
   font-size: 2em;
   font-weight: bold;
+}
+
+.tamanho-list {
+  list-style-type: none;
+  display: flex;
+  padding-top: 20%;
 }
 
 .list-sizes {

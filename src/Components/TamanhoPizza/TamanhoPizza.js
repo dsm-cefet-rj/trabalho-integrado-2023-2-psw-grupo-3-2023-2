@@ -12,9 +12,9 @@ function TamanhoPizza() {
   };
 
   return (
-    <div className="page-container">
+    <div className="page-containerT">
       <h2 className="sabores_title">Selecione o Tamanho da Pizza:</h2>
-      <ul className='list-sizes sabores-grid'>
+      <ul className='tamanho-list'>
         <li>
           <button onClick={() => handleTamanhoClick('30cm')} className={`sizeButton ${tamanhoSelecionado === '30cm' ? 'selected' : ''}`}>30cm</button>
         </li>

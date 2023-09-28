@@ -29,7 +29,7 @@ function IngredientesPizza() {
   };
 
   return (
-    <div className="page-container">
+    <div className="page-containerI">
       <h2 className="ingredientes_title">Selecione os ingredientes da Pizza:</h2>
       <div className="ingredientes-grid">
         {ingredientesData.map((ingrediente) => (

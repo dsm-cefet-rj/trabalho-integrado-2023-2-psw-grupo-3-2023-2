@@ -22,7 +22,7 @@ function SaboresPizza() {
   };
 
   return (
-    <div className="page-container">
+    <div className="page-containerS">
       <h2 className="sabores_title">Selecione o sabor da Pizza:</h2>
       <div className="sabores-grid">
         {saboresData.map((e) => {
