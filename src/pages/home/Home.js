@@ -2,7 +2,6 @@ import React from 'react'
 import './Home.css'
 import { NavLink } from 'react-router-dom'
 import HomePizza from '../../images/PizzaHome.png'
-import HomePizza from '../../images/PizzaHome2.png'
 
 export const Home = () =>{
     return(
