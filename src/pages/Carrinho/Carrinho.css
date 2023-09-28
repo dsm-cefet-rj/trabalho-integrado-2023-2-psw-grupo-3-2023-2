@@ -29,3 +29,13 @@ p {
     font-size: 1.2em;
     margin-bottom: 10px;
 }
+
+p2 {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    text-decoration: underline rgb(159, 49, 51);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 4px;
+    
+}

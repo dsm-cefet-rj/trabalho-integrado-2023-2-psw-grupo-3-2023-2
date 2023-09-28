@@ -1,29 +1,24 @@
 import React, { useEffect } from 'react';
-import './Ingredientes.css'; 
-import { ingredientesData } from '../../data/IngredientesData'; 
+import './Ingredientes.css';
+import { ingredientesData } from '../../data/IngredientesData'; // Certifique-se de importar o objeto ingredientesData
 import IngredientButton from '../../Components/IngredientButton/IngredientButton';
 import CustomButton from '../../Components/CustomButton/CustomButton';
 import useStore from '../../Components/Store/Store';
+import { Link } from 'react-router-dom';
 
 function IngredientesPizza() {
   const ingredientesSelecionados = useStore((state) => state.ingredientesSelecionados);
   const setIngredientesSelecionados = useStore((state) => state.setIngredientesSelecionados);
-
-  useEffect(() => {
-    useStore.setState({ ingredientesData: ingredientesData });
-  }, []);
+  const tamanhoSelecionado = useStore((state) => state.tamanhoSelecionado);
 
   const handleClickIngredient = (ingrediente) => {
-    // Lógica para adicionar/remover ingredientes selecionados
     const index = ingredientesSelecionados.findIndex((item) => item.id === ingrediente.id);
 
     if (index !== -1) {
-      // Se o ingrediente já estiver selecionado, remova-o
       const updatedIngredientes = [...ingredientesSelecionados];
       updatedIngredientes.splice(index, 1);
       setIngredientesSelecionados(updatedIngredientes);
     } else {
-      // Caso contrário, adicione-o à lista de ingredientes selecionados
       setIngredientesSelecionados([...ingredientesSelecionados, ingrediente]);
     }
   };
@@ -37,7 +32,7 @@ function IngredientesPizza() {
             key={ingrediente.id}
             id={ingrediente.id}
             ingrediente={ingrediente.ingrediente}
-            valor={ingrediente.preços}
+            valor={ingrediente.valor} // Passar o valor diretamente do ingredientesData
             onClick={() => handleClickIngredient(ingrediente)}
             selected={ingredientesSelecionados.some((item) => item.id === ingrediente.id)}
           />
@@ -47,7 +42,9 @@ function IngredientesPizza() {
       {/* Botões de navegação ou confirmação */}
       <div className="button-container">
         <CustomButton to="/sabores" className="button">Voltar</CustomButton>
-        <CustomButton to="/carrinho" className="button">Confirmar</CustomButton>
+        <Link to={{ pathname: '/carrinho', state: { tamanhoSelecionado } }}>
+          <button className="button">Confirmar</button>
+        </Link>
       </div>
     </div>
   );

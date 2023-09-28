@@ -5,7 +5,9 @@ export const useStore = create((set) => ({
     saborSelecionado: null,
     ingredientesSelecionados: [],
     saboresData: [],
+    saboresdocesData:[],
     ingredientesData: [],
+    ingredientesdocesData:[],
 
     setSelectedTamanho: (tamanho) => set({ tamanhoSelecionado: tamanho }),
     setSelectedSabor: (sabor) => set({ saborSelecionado: sabor }),
@@ -15,6 +17,7 @@ export const useStore = create((set) => ({
         const tamanho = state.tamanhoSelecionado;
         const sabor = state.saborSelecionado;
         const saboresData = state.saboresData;
+        const saboresdocesData = state.saboresdocesData;
 
         if (tamanho && sabor) {
             const saborEncontrado = saboresData.find((s) => s.id === sabor.id);
@@ -24,7 +27,17 @@ export const useStore = create((set) => ({
                 return precoTamanho;
             }
         }
+
+        if (tamanho && sabor) {
+            const saborEncontrado = saboresdocesData.find((s) => s.id === sabor.id);
+
+            if (saborEncontrado && saborEncontrado.preços[tamanho]) {
+                const precoTamanho = saborEncontrado.preços[tamanho];
+                return precoTamanho;
+            }
+        }
         return 0;
+        
     },
 
     calcularPrecoIngredientes: () => {
@@ -32,12 +45,25 @@ export const useStore = create((set) => ({
         const tamanho = state.tamanhoSelecionado;
         const ingredientesSelecionados = state.ingredientesSelecionados;
         const ingredientesData = state.ingredientesData;
+        const ingredientesdocesData = state.ingredientesdocesData;
 
         if (tamanho && ingredientesSelecionados.length > 0) {
             const precoIngredientes = ingredientesSelecionados.reduce((total, ingrediente) => {
                 const ingredienteEncontrado = ingredientesData.find((item) => item.id === ingrediente.id);
-                if (ingredienteEncontrado && ingredienteEncontrado.preco) {
-                    return total + ingredienteEncontrado.preco;
+                if (ingredienteEncontrado && ingredienteEncontrado.preços) {
+                    return total + ingredienteEncontrado.preços;
+                }
+                return total;
+            }, 0);
+
+            return precoIngredientes;
+        }
+
+        if (tamanho && ingredientesSelecionados.length > 0) {
+            const precoIngredientes = ingredientesSelecionados.reduce((total, ingrediente) => {
+                const ingredienteEncontrado = ingredientesdocesData.find((item) => item.id === ingrediente.id);
+                if (ingredienteEncontrado && ingredienteEncontrado.preços) {
+                    return total + ingredienteEncontrado.preços;
                 }
                 return total;
             }, 0);

@@ -2,89 +2,41 @@ export const ingredientesData = [
   {
     id: 101,
     ingrediente: 'Cebola',
-    preços: {
-      '30cm': 3.0,
-      '35cm': 3.50,
-      '40cm': 4.0,
-      '70cm': 6.50,
-      '90cm': 8.0,
-    },
+    valor: 2.0, // Valor fixo para Cebola
   },
   {
     id: 102,
     ingrediente: 'Cogumelo',
-    preços: {
-      '30cm': 4.0,
-      '35cm': 4.50,
-      '40cm': 5.0,
-      '70cm': 7.50,
-      '90cm': 9.0,
-    },
+    valor: 2.5, // Valor fixo para Cogumelo
   },
   {
     id: 103,
     ingrediente: 'Abacaxi',
-    preços: {
-      '30cm': 4.0,
-      '35cm': 4.50,
-      '40cm': 5.0,
-      '70cm': 7.50,
-      '90cm': 9.0,
-    },
+    valor: 3.0, // Valor fixo para Abacaxi
   },
   {
     id: 104,
     ingrediente: 'Queijo extra',
-    preços: {
-      '30cm': 5.0,
-      '35cm': 5.50,
-      '40cm': 6.0,
-      '70cm': 8.50,
-      '90cm': 10.0,
-    },
+    valor: 2.5, // Valor fixo para Queijo extra
   },
   {
     id: 105,
     ingrediente: 'Azeitona',
-    preços: {
-      '30cm': 3.0,
-      '35cm': 3.50,
-      '40cm': 4.0,
-      '70cm': 6.50,
-      '90cm': 8.0,
-    },
+    valor: 1.5, // Valor fixo para Azeitona
   },
   {
     id: 106,
     ingrediente: 'Bacon',
-    preços: {
-      '30cm': 5.0,
-      '35cm': 5.50,
-      '40cm': 6.0,
-      '70cm': 8.50,
-      '90cm': 11.0,
-    },
+    valor: 4.0, // Valor fixo para Bacon
   },
   {
     id: 107,
     ingrediente: 'Anchova',
-    preços: {
-      '30cm': 5.0,
-      '35cm': 5.50,
-      '40cm': 6.0,
-      '70cm': 8.50,
-      '90cm': 11.0,
-    },
+    valor: 3.5, // Valor fixo para Anchova
   },
   {
     id: 108,
     ingrediente: 'Espinafre',
-    preços: {
-      '30cm': 3.0,
-      '35cm': 3.50,
-      '40cm': 4.0,
-      '70cm': 6.50,
-      '90cm': 8.0,
-    }
+    valor: 2.0, // Valor fixo para Espinafre
   }
 ];

@@ -1,4 +1,5 @@
-export const pizzasDocesData = [
+//OK
+export const saboresdocesData = [
     {
       id: 10,
       sabor: 'Chocolate',
@@ -14,7 +15,7 @@ export const pizzasDocesData = [
     {
       id: 11,
       sabor: 'Banana com Canela',
-      descrição: 'Bananas fatiadas, canela e açúcar.',
+      descrição: 'Bananas fatiadas com canela.',
       preços: {
         '30cm': 28.0,
         '35cm': 33.0,
@@ -26,7 +27,7 @@ export const pizzasDocesData = [
     {
       id: 12,
       sabor: 'Romeu e Julieta',
-      descrição: 'Muçarela, Goibada e Catupiry.',
+      descrição: 'Muçarela, goibada e catupiry.',
       preços: {
         '30cm': 28.0,
         '35cm': 33.0,
