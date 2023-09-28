@@ -1,42 +1,53 @@
 import React, { useState } from 'react';
 import './Pagamento.css';
 
-const EnderecoSalvo = ({ descricao, endereco, onClick, isSelected }) => {
-    const handleOnClick = () => {
-      onClick(descricao);
-    };
-  
-    return (
-      <div
-        className={`endereco-salvo ${isSelected ? 'selected' : ''}`}
-        onClick={handleOnClick}
-      >
-        <p className={`endereco-descricao ${isSelected ? 'selected-text' : ''}`}>
-          {descricao}
-        </p>
-        <p className={`endereco-texto ${isSelected ? 'selected-text' : ''}`}>
-          {endereco}
-        </p>
-      </div>
-    );
+const EnderecoSalvo = ({ descricao, endereco, estado, cep, onClick, isSelected }) => {
+  const handleOnClick = () => {
+    onClick(descricao);
   };
-  
-const enderecosSalvos = [
-    {
-      descricao: 'Casa',
-      endereco: 'Rua A, 123 - Bairro ABC - Cidade X - Estado Y - CEP: 12345-678'
-    },
-    {
-      descricao: 'Trabalho',
-      endereco: 'Avenida B, 456 - Bairro DEF - Cidade Y - Estado Z - CEP: 98765-432'
-    },
-    {
-      descricao: 'Apartamento',
-      endereco: 'Rua C, 789 - Bairro GHI - Cidade Z - Estado W - CEP: 54321-876'
-    }
-  ];
-  
 
+  return (
+    <div
+      className={`endereco-salvo ${isSelected ? 'selected' : ''}`}
+      onClick={handleOnClick}
+    >
+      <p className={`endereco-descricao ${isSelected ? 'selected-text' : ''}`}>
+        {descricao}
+      </p>
+      <p className={`endereco-texto ${isSelected ? 'selected-text' : ''}`}>
+        {endereco}
+      </p>
+      <p className={`endereco-estado ${isSelected ? 'selected-text' : ''}`}>
+        {estado}
+      </p>
+      <p className={`endereco-cep ${isSelected ? 'selected-text' : ''}`}>
+        {cep}
+      </p>
+    </div>
+  );
+};
+
+const enderecosSalvos = [
+  {
+    descricao: 'Casa',
+    endereco: 'Rua A, 123 - Bairro ABC - Cidade X',
+    estado: 'Estado X',
+    cep:'CEP: 12345-678'
+  },
+  {
+    descricao: 'Trabalho',
+    endereco: 'Avenida B, 456 - Bairro DEF - Cidade Y',
+    estado: 'Estado Y',
+    cep:'CEP: 12345-786'
+  },
+  {
+    descricao: 'Apartamento',
+    endereco: 'Rua C, 789 - Bairro GHI - Cidade Z',
+    estado: 'Estado Z',
+    cep:'CEP: 12345-888'
+  },
+  
+];
 
 const Pagamento = () => {
   const [showAddressSection, setShowAddressSection] = useState(false);
@@ -45,6 +56,7 @@ const Pagamento = () => {
   const [paymentOption, setPaymentOption] = useState('- Selecionar -');
   const [selectedEndereco, setSelectedEndereco] = useState(null);
   const [showSelectedEndereco, setShowSelectedEndereco] = useState(false);
+  const [showConfirmacao, setShowConfirmacao] = useState(false);
 
   const handleSelectEndereco = (descricao) => {
     setSelectedEndereco(descricao);
@@ -54,11 +66,15 @@ const Pagamento = () => {
   const handleSelecionar = () => {
     setShowAddressSection(false);
     setShowPaymentSection(true);
+    setShowSelectedEndereco(false); 
   };
+
+  
 
   const handleVoltar = () => {
     setShowSelectedEndereco(false);
     setSelectedEndereco(null);
+    setShowAddressSection(true);
   };
 
   const handleToggleOptions = () => {
@@ -84,28 +100,45 @@ const Pagamento = () => {
 
   const renderEnderecosSalvos = () => {
     return enderecosSalvos.map((endereco, index) => (
-      <EnderecoSalvo
+      <div
         key={index}
-        descricao={endereco.descricao}
-        endereco={endereco.endereco}
-        isSelected={selectedEndereco === endereco.descricao}
-        onClick={handleSelectEndereco}
-      />
+        className={`endereco-salvo ${selectedEndereco === endereco.descricao ? 'selected' : ''}`}
+        onClick={() => handleSelectEndereco(endereco.descricao)}
+      >
+        <p className="endereco-descricao">{endereco.descricao}</p>
+        <p className="endereco-texto">{endereco.endereco}</p>
+        <p className="endereco-texto">{endereco.estado}</p>
+        <p className="endereco-texto cep">{endereco.cep}</p>
+      </div>
     ));
   };
 
+  const handleFecharEndereco = () => {
+    setShowSelectedEndereco(false);
+    setSelectedEndereco(null);
+  };  
 
   const renderSelectedEndereco = () => {
-    return (
-      <div className="selected-endereco">
-        <p className="endereco-descricao">{selectedEndereco}</p>
-        <p className="endereco-texto">
-          {enderecosSalvos.find((endereco) => endereco.descricao === selectedEndereco).endereco}
-        </p>
-      </div>
-    );
-  };
+  const selectedEnderecoDetails = enderecosSalvos.find(
+    (endereco) => endereco.descricao === selectedEndereco
+  );
 
+  return (
+    <div className="selected-endereco">
+      <div className="endereco-header">
+        <p className="endereco-descricao">{selectedEndereco}</p>
+        <span className="close-button" onClick={handleFecharEndereco}>
+          &#x2715;
+        </span>
+      </div>
+      <p className="endereco-texto">
+        {selectedEnderecoDetails.endereco}, {selectedEnderecoDetails.estado}
+      </p>
+      <p className="endereco-texto cep">{selectedEnderecoDetails.cep}</p>
+    </div>
+  );
+};
+ 
   const renderAddressSection = () => {
     return (
       <div className="address-section">
@@ -159,7 +192,7 @@ const Pagamento = () => {
     );
   };
 
-  const paymentOptions = ['Cartão', 'Boleto', 'Pix'];
+    const paymentOptions = ['Cartão', 'Boleto', 'Pix'];
 
   const renderPaymentSection = () => {
     return (
@@ -201,8 +234,14 @@ const Pagamento = () => {
     <div className="page-container">
       <div className="left-section">
         {renderValueTotal()}
-        {renderAddressSection()}
-        {showNewAddressForm && renderNewAddressForm()}
+        {showSelectedEndereco ? (
+          renderSelectedEndereco()
+        ) : (
+          <>
+            {renderAddressSection()}
+            {showNewAddressForm && renderNewAddressForm()}
+          </>
+        )}
       </div>
 
       <div className="right-section">
