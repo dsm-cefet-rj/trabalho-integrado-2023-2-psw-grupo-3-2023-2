@@ -3,12 +3,13 @@
 import React from 'react';
 import useStore from '../../Components/Store/Store';
 import './Carrinho.css';
+
 import CustomButton from '../../Components/CustomButton/CustomButton';
+
 
 function Carrinho() {
   const tamanhoSelecionado = useStore((state) => state.tamanhoSelecionado);
   const saborSelecionado = useStore((state) => state.saborSelecionado);
-  const ingredientesSelecionados = useStore((state) => state.ingredientesSelecionados);
   const saboresData = useStore((state) => state.saboresData);
 
   const calcularPrecoIngredientes = () => {
@@ -25,7 +26,7 @@ function Carrinho() {
   };
   if (!saborSelecionado) {
     return (
-      <div className="page-containerC">
+      <div className="page-container">
         <h1>Carrinho</h1>
         <p>Nenhuma pizza selecionada no carrinho.</p>
       </div>
@@ -36,7 +37,7 @@ function Carrinho() {
 
   if (!sabor) {
     return (
-      <div className="page-containerC">
+      <div className="page-container">
         <h1>Carrinho</h1>
         <p>Sabor selecionado não encontrado.</p>
       </div>
@@ -78,9 +79,6 @@ function Carrinho() {
       ) : (
         <p>Nenhuma pizza selecionada no carrinho.</p>
       )}
-      <div className="button-container">
-        <CustomButton to="/Pagamento" className="button">Seguir para o Pagamento</CustomButton>
-      </div>
     </div>
   );
 }
