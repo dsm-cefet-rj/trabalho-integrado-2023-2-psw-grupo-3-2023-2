@@ -1,17 +1,28 @@
 import { create } from 'zustand';
 
 export const useStore = create((set) => ({
+    orders: [], // New state for storing orders
     tamanhoSelecionado: null,
     saborSelecionado: null,
     ingredientesSelecionados: [],
     saboresData: [],
-    saboresdocesData:[],
+    saboresdocesData: [],
     ingredientesData: [],
-    ingredientesdocesData:[],
+    ingredientesdocesData: [],
 
     setSelectedTamanho: (tamanho) => set({ tamanhoSelecionado: tamanho }),
     setSelectedSabor: (sabor) => set({ saborSelecionado: sabor }),
-    setIngredientesSelecionados: (ingredientes) => set({ ingredientesSelecionados: ingredientes }), 
+    setIngredientesSelecionados: (ingredientes) => set({ ingredientesSelecionados: ingredientes }),
+
+    // New function for adding an order to the orders array
+    addOrder: () => set((state) => {
+        const newOrder = {
+            tamanho: state.tamanhoSelecionado,
+            sabor: state.saborSelecionado,
+            ingredientes: state.ingredientesSelecionados,
+        };
+        return { orders: [...state.orders, newOrder] };
+    }),
     calcularPrecoTotal: () => {
         const state = useStore.getState();
         const tamanho = state.tamanhoSelecionado;
@@ -37,7 +48,7 @@ export const useStore = create((set) => ({
             }
         }
         return 0;
-        
+
     },
 
     calcularPrecoIngredientes: () => {

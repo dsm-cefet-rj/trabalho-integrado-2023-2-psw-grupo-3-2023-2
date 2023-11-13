@@ -4,10 +4,20 @@ import { saboresData } from '../../data/PizzasData';
 import PizzaButton from '../PizzaButton/PizzaButton';
 import CustomButton from '../CustomButton/CustomButton';
 import useStore from '../Store/Store';
+import { useNavigate } from 'react-router-dom';
 
 function SaboresPizza() {
   const saborSelecionado = useStore((state) => state.saborSelecionado);
   const setSelectedSabor = useStore((state) => state.setSelectedSabor);
+  const navigate = useNavigate();
+  const addOrder = useStore((state) => state.addOrder);
+
+  const handleConfirmar = () => {
+    // Call the addOrder function to add the order to the orders array
+    addOrder();
+    // Redirect to the Carrinho page
+    navigate('/carrinho');
+  };
 
   useEffect(() => {
     useStore.setState({ saboresData: saboresData });
@@ -44,7 +54,7 @@ function SaboresPizza() {
       <div className="button-container">
         <CustomButton to="/tamanhos">Voltar para Tamanhos de Pizza</CustomButton>
         <CustomButton to="/ingredientes">Adicionar Ingredientes Extras</CustomButton>
-        <CustomButton to="/carrinho" className="button">Confirmar</CustomButton>
+        <CustomButton onClick={handleConfirmar} className="button">Confirmar</CustomButton>
       </div>
     </div>
   );

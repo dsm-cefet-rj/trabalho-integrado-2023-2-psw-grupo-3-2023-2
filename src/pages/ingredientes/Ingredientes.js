@@ -4,12 +4,22 @@ import { ingredientesData } from '../../data/IngredientesData'; // Certifique-se
 import IngredientButton from '../../Components/IngredientButton/IngredientButton';
 import CustomButton from '../../Components/CustomButton/CustomButton';
 import useStore from '../../Components/Store/Store';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 function IngredientesPizza() {
   const ingredientesSelecionados = useStore((state) => state.ingredientesSelecionados);
   const setIngredientesSelecionados = useStore((state) => state.setIngredientesSelecionados);
   const tamanhoSelecionado = useStore((state) => state.tamanhoSelecionado);
+  const addOrder = useStore((state) => state.addOrder);
+  const navigate = useNavigate();
+
+  const handleConfirmar = () => {
+    // Call the addOrder function to add the order to the orders array
+    addOrder();
+    // Redirect to the Carrinho page
+    navigate('/carrinho');
+  };
 
   const handleClickIngredient = (ingrediente) => {
     const index = ingredientesSelecionados.findIndex((item) => item.id === ingrediente.id);
@@ -43,7 +53,7 @@ function IngredientesPizza() {
       <div className="button-container">
         <CustomButton to="/sabores" className="button">Voltar</CustomButton>
         <Link to={{ pathname: '/carrinho', state: { tamanhoSelecionado } }}>
-          <button className="button">Confirmar</button>
+          <button onClick={handleConfirmar} className="button">Confirmar</button>
         </Link>
       </div>
     </div>
