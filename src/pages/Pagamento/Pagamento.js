@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
 import './Pagamento.css';
+import TelaVazia from '../TelaVazia/TelaVazia';
 
 const EnderecoSalvo = ({ descricao, endereco, estado, cep, onClick, isSelected }) => {
   const handleOnClick = () => {
@@ -32,21 +34,20 @@ const enderecosSalvos = [
     descricao: 'Casa',
     endereco: 'Rua A, 123 - Bairro ABC - Cidade X',
     estado: 'Estado X',
-    cep:'CEP: 12345-678'
+    cep: 'CEP: 12345-678',
   },
   {
     descricao: 'Trabalho',
     endereco: 'Avenida B, 456 - Bairro DEF - Cidade Y',
     estado: 'Estado Y',
-    cep:'CEP: 12345-786'
+    cep: 'CEP: 12345-786',
   },
   {
     descricao: 'Apartamento',
     endereco: 'Rua C, 789 - Bairro GHI - Cidade Z',
     estado: 'Estado Z',
-    cep:'CEP: 12345-888'
+    cep: 'CEP: 12345-888',
   },
-  
 ];
 
 const Pagamento = () => {
@@ -56,7 +57,7 @@ const Pagamento = () => {
   const [paymentOption, setPaymentOption] = useState('- Selecionar -');
   const [selectedEndereco, setSelectedEndereco] = useState(null);
   const [showSelectedEndereco, setShowSelectedEndereco] = useState(false);
-  const [showConfirmacao, setShowConfirmacao] = useState(false);
+  const navigate = useNavigate();
 
   const handleSelectEndereco = (descricao) => {
     setSelectedEndereco(descricao);
@@ -66,10 +67,8 @@ const Pagamento = () => {
   const handleSelecionar = () => {
     setShowAddressSection(false);
     setShowPaymentSection(true);
-    setShowSelectedEndereco(false); 
+    setShowSelectedEndereco(false);
   };
-
-  
 
   const handleVoltar = () => {
     setShowSelectedEndereco(false);
@@ -100,45 +99,44 @@ const Pagamento = () => {
 
   const renderEnderecosSalvos = () => {
     return enderecosSalvos.map((endereco, index) => (
-      <div
+      <EnderecoSalvo
         key={index}
-        className={`endereco-salvo ${selectedEndereco === endereco.descricao ? 'selected' : ''}`}
+        descricao={endereco.descricao}
+        endereco={endereco.endereco}
+        estado={endereco.estado}
+        cep={endereco.cep}
         onClick={() => handleSelectEndereco(endereco.descricao)}
-      >
-        <p className="endereco-descricao">{endereco.descricao}</p>
-        <p className="endereco-texto">{endereco.endereco}</p>
-        <p className="endereco-texto">{endereco.estado}</p>
-        <p className="endereco-texto cep">{endereco.cep}</p>
-      </div>
+        isSelected={selectedEndereco === endereco.descricao}
+      />
     ));
   };
 
   const handleFecharEndereco = () => {
     setShowSelectedEndereco(false);
     setSelectedEndereco(null);
-  };  
+  };
 
   const renderSelectedEndereco = () => {
-  const selectedEnderecoDetails = enderecosSalvos.find(
-    (endereco) => endereco.descricao === selectedEndereco
-  );
+    const selectedEnderecoDetails = enderecosSalvos.find(
+      (endereco) => endereco.descricao === selectedEndereco
+    );
 
-  return (
-    <div className="selected-endereco">
-      <div className="endereco-header">
-        <p className="endereco-descricao">{selectedEndereco}</p>
-        <span className="close-button" onClick={handleFecharEndereco}>
-          &#x2715;
-        </span>
+    return (
+      <div className="selected-endereco">
+        <div className="endereco-header">
+          <p className="endereco-descricao">{selectedEndereco}</p>
+          <span className="close-button" onClick={handleFecharEndereco}>
+            &#x2715;
+          </span>
+        </div>
+        <p className="endereco-texto">
+          {selectedEnderecoDetails.endereco}, {selectedEnderecoDetails.estado}
+        </p>
+        <p className="endereco-texto cep">{selectedEnderecoDetails.cep}</p>
       </div>
-      <p className="endereco-texto">
-        {selectedEnderecoDetails.endereco}, {selectedEnderecoDetails.estado}
-      </p>
-      <p className="endereco-texto cep">{selectedEnderecoDetails.cep}</p>
-    </div>
-  );
-};
- 
+    );
+  };
+
   const renderAddressSection = () => {
     return (
       <div className="address-section">
@@ -171,12 +169,11 @@ const Pagamento = () => {
         </div>
       </div>
     );
-  
   };
 
   const renderNewAddressForm = () => {
     return (
-        <div className="new-address-form">
+      <div className="new-address-form">
         <form>
           <input type="text" placeholder="Nome Completo" />
           <input type="text" placeholder="CEP" />
@@ -192,7 +189,7 @@ const Pagamento = () => {
     );
   };
 
-    const paymentOptions = ['Cartão', 'Boleto', 'Pix'];
+  const paymentOptions = ['Cartão', 'Boleto', 'Pix'];
 
   const renderPaymentSection = () => {
     return (
@@ -230,10 +227,17 @@ const Pagamento = () => {
     );
   };
 
+  const handlePagar = () => {
+
+    navigate('/tela-vazia');
+  };
+
+  const isPagarButtonDisabled = !selectedEndereco || paymentOption === '- Selecionar -';
+
   return (
     <div className="page-container">
+      {renderValueTotal()}
       <div className="left-section">
-        {renderValueTotal()}
         {showSelectedEndereco ? (
           renderSelectedEndereco()
         ) : (
@@ -246,6 +250,14 @@ const Pagamento = () => {
 
       <div className="right-section">
         {renderPaymentSection()}
+      </div>
+
+      <div className="buttons-container-outer">
+        <div className="buttons-container">
+          <button onClick={handlePagar} disabled={isPagarButtonDisabled}>
+            Pagar
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,23 @@
+.tela-vazia2-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: white;
+  }
+  
+  .mensagem {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: rgb(159, 49, 51); /* Cor semelhante à navbar */
+    text-shadow: 2px 2px 4px black; /* Traçado preto */
+  }
+  
+  .countdown {
+    font-size: 1.5em;
+    margin-top: 10px;
+    color: rgb(159, 49, 51); /* Cor semelhante à navbar */
+  }
+  
+  

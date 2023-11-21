@@ -9,37 +9,49 @@
   padding: 20px;
   display: flex; 
   align-items: center; 
+  position: relative;
 }
 
-  .left-section, .right-section {
-    width: 48%; 
-  }
-  
-  .value-total {
-    display: flex;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 24px;
-    color: white;
-    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black; /* Adicionando o traçado preto */
-  }
+.value-total {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 24px;
+  color: white;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+}
+
+.left-section, .right-section {
+  width: 48%; 
+}
+
+.header, .section-header {
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+  color: white;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.address-section,
+.payment-section {
+  margin-top: 20px;
+}
+
   .payment-section .header {
     font-weight: bold;
     display: flex;
     justify-content: center;
     font-size: 25px;
     color: white;
-    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black; /* Adicionando o traçado preto */
-  }
-  
-  .address-section,
-  .payment-section {
-    margin-top: 20px;
-  }
-  
-  .header {
-    font-weight: bold;
-    font-size: 18px;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black; 
   }
   
   .expand-button {
@@ -71,12 +83,12 @@
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
-    background-color: rgba(255, 255, 255, 0.7); /* Fundo levemente transparente */
-    transition: background-color 0.3s ease; /* Adicionando transição para o fundo */
+    background-color: rgba(255, 255, 255, 0.7);
+    transition: background-color 0.3s ease; 
   }
   
   .payment-options li:hover {
-    background-color: white; /* Transição para o branco ao passar o cursor */
+    background-color: white;
   }
   
   
@@ -89,12 +101,12 @@
     cursor: pointer;
     padding: 10px;
     margin-bottom: 10px;
-    background-color: rgba(255, 255, 255, 0.7); /* Fundo levemente transparente */
-    transition: background-color 0.3s ease; /* Adicionando transição para o fundo */
+    background-color: rgba(255, 255, 255, 0.7);
+    transition: background-color 0.3s ease;
   }
   
   .endereco-salvo:hover {
-    background-color: white; /* Transição para o branco ao passar o cursor */
+    background-color: white;
   }
   @keyframes cascade {
     from {
@@ -117,17 +129,17 @@
   
   .endereco-descricao {
     font-weight: bold;
-    font-size: 16px; /* Ajustando o tamanho do nome do endereço */
-    text-align: center; /* Centralizando o nome do endereço */
+    font-size: 16px; 
+    text-align: center; 
   }
   
   .endereco-texto {
-    font-size: 14px; /* Ajustando o tamanho do detalhamento do endereço */
+    font-size: 14px; 
   }
   
   .endereco-texto .cep {
-    font-weight: bold; /* Tornando o CEP em negrito */
-    margin-bottom: 5px; /* Adicionando uma linha de distância */
+    font-weight: bold; 
+    margin-bottom: 5px; 
   }
   
   .new-address-form form {
@@ -166,13 +178,13 @@
   
   .payment-section .balloon {
     position: absolute;
-    background-color: #f0f0f0; /* Cor do balão */
+    background-color: #f0f0f0; 
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
-    top: -40px; /* Posicionamento para cima */
-    left: -10px; /* Ajuste de posicionamento horizontal */
-    z-index: 1; /* Garante que o balão fique acima do conteúdo */
+    top: -40px;
+    left: -10px; 
+    z-index: 1; 
   }
   
   .payment-section .balloon::after {
@@ -185,46 +197,21 @@
     border-color: #f0f0f0 transparent transparent transparent;
     transform: translateX(-50%);
   }
-  .buttons-container button:hover {
-    background-color: #f0f0f0;
-  }
-
-  .remove-address-button {
-    background-color: transparent;
-    border: none;
-    color: red;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  .selected-endereco {
-    padding: 10px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-  }
-  
-  .endereco-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+  .buttons-container-outer {
     text-align: center;
+    margin-top: 20px;
   }
   
-  .endereco-header .endereco-descricao {
-    font-weight: bold;
-    font-size: 18px;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 5px;
-    text-align: center; /* Adicionando centralização ao título */
-  }
-  
-  .endereco-header .close-button {
+  .buttons-container button {
+    padding: 15px; 
+    font-size: 18px; 
+    border: none;
     cursor: pointer;
+    border-radius: 5px;
+    background-color: rgb(159, 49, 51);; 
+    transition: background-color 0.3s ease; 
   }
   
-  .endereco-texto {
-    font-size: 16px;
-    word-break: break-word;
-    white-space: pre-wrap;
+  .buttons-container button:hover {
+    background-color: rgb(123, 9, 9); 
   }
