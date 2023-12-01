@@ -18,10 +18,6 @@
   
   
   @media (max-width: 768px) {
-    .form-container-login {
-      min-width: 80%; 
-    }
-  
     .cadastro {
       left: 50%;
       transform: translateX(-50%);
