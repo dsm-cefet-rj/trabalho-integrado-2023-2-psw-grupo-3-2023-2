@@ -5,18 +5,25 @@ import PizzaButton from '../PizzaButton/PizzaButton';
 import CustomButton from '../CustomButton/CustomButton';
 import useStore from '../Store/Store';
 import { useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function SaboresPizza() {
   const saborSelecionado = useStore((state) => state.saborSelecionado);
   const setSelectedSabor = useStore((state) => state.setSelectedSabor);
+  const limpar = useStore(state => state.limpar);
   const navigate = useNavigate();
   const addOrder = useStore((state) => state.addOrder);
 
   const handleConfirmar = () => {
-    // Call the addOrder function to add the order to the orders array
+    if(!saborSelecionado) {
+      toast.error("Selecione um sabor", {limit: 1});
+    }
+    else{
     addOrder();
-    // Redirect to the Carrinho page
+    limpar();
     navigate('/carrinho');
+    }
   };
 
   useEffect(() => {
@@ -50,7 +57,6 @@ function SaboresPizza() {
         })}
       </div>
 
-
       <div className="button-container">
         <CustomButton to="/tamanhos">Voltar para Tamanhos de Pizza</CustomButton>
         <CustomButton to="/ingredientes">Adicionar Ingredientes Extras</CustomButton>
@@ -61,3 +67,4 @@ function SaboresPizza() {
 }
 
 export default SaboresPizza;
+

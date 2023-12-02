@@ -23,6 +23,13 @@ export const useStore = create((set) => ({
         };
         return { orders: [...state.orders, newOrder] };
     }),
+
+    deleteOrder: (index) => set((state) => {
+        const newOrders = [...state.orders];
+        newOrders.splice(index, 1);
+        return { orders: newOrders };
+    }),
+
     calcularPrecoTotal: () => {
         const state = useStore.getState();
         const tamanho = state.tamanhoSelecionado;
@@ -85,7 +92,11 @@ export const useStore = create((set) => ({
         return 0;
     },
 
-    reset: () => set({ tamanhoSelecionado: null, saborSelecionado: null, ingredientesSelecionados: [] }),
+    limparCarrinho: () => {
+        set({ tamanhoSelecionado: null, saborSelecionado: null, ingredientesSelecionados: [], orders: [] });
+      },
+
+    limpar: () => set({ tamanhoSelecionado: null, saborSelecionado: null, ingredientesSelecionados: [] }),
 }));
 
 export default useStore;

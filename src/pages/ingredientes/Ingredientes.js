@@ -6,19 +6,23 @@ import CustomButton from '../../Components/CustomButton/CustomButton';
 import useStore from '../../Components/Store/Store';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function IngredientesPizza() {
   const ingredientesSelecionados = useStore((state) => state.ingredientesSelecionados);
   const setIngredientesSelecionados = useStore((state) => state.setIngredientesSelecionados);
   const tamanhoSelecionado = useStore((state) => state.tamanhoSelecionado);
-  const addOrder = useStore((state) => state.addOrder);
+  const atual = useStore((state) => state.addOrder);
   const navigate = useNavigate();
 
   const handleConfirmar = () => {
-    // Call the addOrder function to add the order to the orders array
-    addOrder();
-    // Redirect to the Carrinho page
-    navigate('/carrinho');
+    if(ingredientesSelecionados.length === 0) {
+      toast.error("Selecione um ingrediente", {limit: 1});
+    }
+    else{
+    navigate('/sabores');
+    }
   };
 
   const handleClickIngredient = (ingrediente) => {
@@ -52,9 +56,7 @@ function IngredientesPizza() {
       {/* Botões de navegação ou confirmação */}
       <div className="button-container">
         <CustomButton to="/sabores" className="button">Voltar</CustomButton>
-        <Link to={{ pathname: '/carrinho', state: { tamanhoSelecionado } }}>
-          <button onClick={handleConfirmar} className="button">Confirmar</button>
-        </Link>
+          <CustomButton onClick={handleConfirmar} className="button">Confirmar</CustomButton>
       </div>
     </div>
   );

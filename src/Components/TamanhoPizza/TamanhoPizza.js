@@ -2,10 +2,23 @@ import React from 'react';
 import './tamanhos.css';
 import CustomButton from '../CustomButton/CustomButton';
 import useStore from '../Store/Store';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from 'react-router-dom';
 
 function TamanhoPizza() {
   const tamanhoSelecionado = useStore((state) => state.tamanhoSelecionado);
   const setSelectedTamanho = useStore((state) => state.setSelectedTamanho);
+  const navigate = useNavigate();
+
+  const handleConfirmar = () => {
+    if(!tamanhoSelecionado) {
+      toast.error("Selecione um tamanho");
+    }
+    else{
+    navigate('/sabores');
+    };
+  }
 
   const handleTamanhoClick = (tamanho) => {
     setSelectedTamanho(tamanho);
@@ -37,7 +50,7 @@ function TamanhoPizza() {
       )}
 
       <div className="button-container">
-        <CustomButton to="/sabores">Ir para Sabores de Pizza</CustomButton>
+        <CustomButton onClick={handleConfirmar}>Ir para Sabores de Pizza</CustomButton>
       </div>
     </div>
   );

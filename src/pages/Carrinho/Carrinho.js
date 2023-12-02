@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import useStore from '../../Components/Store/Store';
 import './Carrinho.css';
 import CustomButton from '../../Components/CustomButton/CustomButton';
@@ -10,7 +10,10 @@ function Carrinho() {
   const ingredientesSelecionados = useStore((state) => state.ingredientesSelecionados);
   const saboresData = useStore((state) => state.saboresData);
   const orders = useStore((state) => state.orders);
+  const limparCarrinho = useStore(state => state.limparCarrinho);
+  const deleteOrder = useStore(state => state.deleteOrder);
   const navigate = useNavigate();
+
 
   const calcularPrecoIngredientes = () => {
     if (ingredientesSelecionados.length > 0) {
@@ -41,7 +44,7 @@ function Carrinho() {
     navigate('/pagamento', { state: { totalValue } });
   };
 
-  if (!saborSelecionado) {
+  if (orders.length === 0) {
     return (
       <div className="page-containerC">
         <h1>Carrinho</h1>
@@ -50,16 +53,16 @@ function Carrinho() {
     );
   }
 
-  const sabor = saboresData.find((sabor) => sabor.id === saborSelecionado.id);
+  // const sabor = saboresData.find((sabor) => sabor.id === saborSelecionado.id);
 
-  if (!sabor) {
-    return (
-      <div className="page-containerC">
-        <h1>Carrinho</h1>
-        <p>Sabor selecionado não encontrado.</p>
-      </div>
-    );
-  }
+  // if (!sabor) {
+  //   return (
+  //     <div className="page-containerC">
+  //       <h1>Carrinho</h1>
+  //       <p>Sabor selecionado não encontrado.</p>
+  //     </div>
+  //   );
+  // }
 
   const precoTotal = useStore.getState().calcularPrecoTotal();
   const precoIngredientes = calcularPrecoIngredientes();
@@ -72,6 +75,7 @@ function Carrinho() {
       <h1>Carrinho</h1>
       {orders.map((order, index) => (
         <div key={index} className="pizza-details">
+          <CustomButton onClick={deleteOrder}>X</CustomButton>
           <h2>Tamanho: {order.tamanho}</h2>
           <h2>Sabor: {order.sabor.sabor}</h2>
           <p>Descrição: {order.sabor.descrição}</p>
@@ -97,6 +101,7 @@ function Carrinho() {
 
 
       <div className="button-container">
+      <CustomButton onClick={limparCarrinho}>Limpar Carrinho</CustomButton>
         <CustomButton onClick={handlePagamento} className="button">Seguir para o Pagamento</CustomButton>
       </div>
     </div>
@@ -104,3 +109,5 @@ function Carrinho() {
 }
 
 export default Carrinho;
+
+
