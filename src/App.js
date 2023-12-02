@@ -8,7 +8,7 @@ import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import PizzaButton from './Components/PizzaButton/PizzaButton';
 import BaseLayout from './Layout/BaseLayout/BaseLayout'
-import Carrinho  from './pages/carrinho/Carrinho';
+import Carrinho from './pages/Carrinho/Carrinho';
 import Ingredientes from './pages/ingredientes/Ingredientes'
 import IngredientesDocesPizza from './pages/ingredientes/IngredientesDoces'
 import Home from './pages/home/Home';
@@ -17,7 +17,7 @@ import Footer from './Components/Footer/footer';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Pagamento from './pages/Pagamento/Pagamento';
-import TelaVazia from './pages/TelaVazia/TelaVazia'; 
+import TelaVazia from './pages/TelaVazia/TelaVazia';
 
 function App() {
   return (
@@ -32,13 +32,13 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/carrinho" element={<Carrinho />} />
-        <Route path="/pagamento" element={<Pagamento/>}/>
+        <Route path="/pagamento" element={<Pagamento />} />
         <Route path="/tela-vazia" element={<TelaVazia />} />
         <Route path="*" element={<Navigate to="/pagamento" />} />
         <Route path="/" element={<Home />} />
       </Routes>
       <Footer />
-      <ToastContainer limit={1}  autoClose={1000} />
+      <ToastContainer limit={1} autoClose={1000} />
     </Router>
   );
 }
