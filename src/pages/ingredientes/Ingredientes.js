@@ -18,7 +18,7 @@ function IngredientesPizza() {
 
   const handleConfirmar = () => {
     if(ingredientesSelecionados.length === 0) {
-      toast.error("Selecione um ingrediente", {limit: 1});
+      toast.error("Selecione um ingrediente");
     }
     else{
     navigate('/sabores');

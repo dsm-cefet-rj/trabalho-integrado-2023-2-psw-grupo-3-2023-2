@@ -17,7 +17,7 @@ function SaboresPizza() {
 
   const handleConfirmar = () => {
     if(!saborSelecionado) {
-      toast.error("Selecione um sabor", {limit: 1});
+      toast.error("Selecione um sabor");
     }
     else{
     addOrder();

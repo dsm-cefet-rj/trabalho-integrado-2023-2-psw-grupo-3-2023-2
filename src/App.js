@@ -38,7 +38,7 @@ function App() {
         <Route path="/" element={<Home />} />
       </Routes>
       <Footer />
-      <ToastContainer limit={1}  />
+      <ToastContainer limit={1}  autoClose={1000} />
     </Router>
   );
 }
