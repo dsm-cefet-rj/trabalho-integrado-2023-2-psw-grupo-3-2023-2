@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import useStore from '../../Components/Store/Store';
 import './Pagamento.css';
 import TelaVazia from '../TelaVazia/TelaVazia';
 
@@ -58,6 +59,9 @@ const Pagamento = () => {
   const [selectedEndereco, setSelectedEndereco] = useState(null);
   const [showSelectedEndereco, setShowSelectedEndereco] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const totalValue = location.state.totalValue;
+  const limparCarrinho = useStore(state => state.limparCarrinho);
 
   const handleSelectEndereco = (descricao) => {
     setSelectedEndereco(descricao);
@@ -189,7 +193,7 @@ const Pagamento = () => {
     );
   };
 
-  const paymentOptions = ['Cartão', 'Boleto', 'Pix'];
+  const paymentOptions = ['Cartão', 'Dinheiro'];
 
   const renderPaymentSection = () => {
     return (
@@ -222,13 +226,13 @@ const Pagamento = () => {
     return (
       <div className="value-total">
         <span className="bold">Valor Total:</span>
-        <span className="bold">R$ 25,00</span>
+        <span className="bold">R$ {totalValue.toFixed(2)}</span>
       </div>
     );
   };
 
   const handlePagar = () => {
-
+    limparCarrinho();
     navigate('/tela-vazia');
   };
 

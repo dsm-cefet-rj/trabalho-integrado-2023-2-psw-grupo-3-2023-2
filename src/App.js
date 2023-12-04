@@ -8,7 +8,7 @@ import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import PizzaButton from './Components/PizzaButton/PizzaButton';
 import BaseLayout from './Layout/BaseLayout/BaseLayout'
-import Carrinho from './pages/Carrinho/Carrinho';
+import Carrinho from './pages/carrinho/Carrinho';
 import Ingredientes from './pages/ingredientes/Ingredientes'
 import IngredientesDocesPizza from './pages/ingredientes/IngredientesDoces'
 import Home from './pages/home/Home';

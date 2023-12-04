@@ -5,7 +5,7 @@ import './TelaVazia.css';
 const TelaVazia = () => {
   const [showGif, setShowGif] = useState(true);
   const [showNovoConteiner, setShowNovoConteiner] = useState(false);
-  const [countdown, setCountdown] = useState(5);
+  const [countdown, setCountdown] = useState(10);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const TelaVazia = () => {
       {showNovoConteiner && (
         <div className={`novo-conteiner mostrar`}>
           <p className="mensagem-sucesso">
-            Seu pedido foi entregue com sucesso!!! Obrigado pela preferência
+            Seu pedido foi entregue com sucesso! Obrigado pela preferência.
           </p>
           <p className="contador">
             Voltando para o início em: {countdown} segundos
