@@ -8,7 +8,6 @@ export const useStore = create((set) => ({
     saboresData: [],
     saboresdocesData: [],
     ingredientesData: [],
-    ingredientesdocesData: [],
 
     setSelectedTamanho: (tamanho) => set({ tamanhoSelecionado: tamanho }),
     setSelectedSabor: (sabor) => set({ saborSelecionado: sabor }),

@@ -10,8 +10,6 @@ const Register = () => {
   const [nome, setNome ] = useState("");
   const [email, setEmail ] = useState("");
   const [celular, setCelular] = useState("");
-  const [rua, setRua] = useState("");
-  const [numero, setNumero] = useState("");
   const [senha, setSenha] = useState("");
   const [confirmSenha, setConfirmSenha] = useState("");
 
