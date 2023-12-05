@@ -19,6 +19,12 @@ app.use(function(req, res, next) {
 const userRoutes = require('./routes/userRoutes');
 app.use("/user", userRoutes);
 
+const addressRoutes = require('./routes/addressRoutes');
+app.use("/address", addressRoutes);
+
+const cardRoutes = require('./routes/cardRoutes');
+app.use("/card", cardRoutes);
+
 mongoose.connect('mongodb+srv://victorbonilha:Ga4RVWVwaQ6vBCmM@pizzaria.yr0hvt9.mongodb.net/?retryWrites=true&w=majority')
 .then(() => {
     app.listen(3000, () => {

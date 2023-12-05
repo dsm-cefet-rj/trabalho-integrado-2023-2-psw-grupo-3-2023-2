@@ -54,8 +54,7 @@ const Register = () => {
 
   const handlesubmit = (e) => {
     e.preventDefault();
-    let regobj = { 
-      name:nome, email, password:senha };
+    let regobj = {name:nome, email, password:senha, cellPhone:celular};
     console.log(regobj)
     if (IsValidate()) {
     fetch("http://localhost:3000/user/signup", {
@@ -86,14 +85,6 @@ const Register = () => {
               <div className="form-group">
                 <label htmlFor="telefone" className="label">Celular (Com DDD):</label>
                 <input type="text" id="telefone" name="telefone" required="required" placeholder="(00) 00000-0000" value={celular} onChange={e => setCelular(e.target.value)}/>
-              </div>
-              <div className="form-group">
-                <label htmlFor="rua" className="label">Rua:</label>
-                <input type="text" id="rua" name="rua" required="required" placeholder="Rua General Canabarro" value={rua} onChange={e => setRua(e.target.value)}/>
-              </div>
-              <div className="form-group">
-                <label htmlFor="numero" className="label">Número:</label>
-                <input type="text" id="numero" name="numero" required="required" placeholder="Casa 10 ou Apartamento 3" value={numero} onChange={e => setNumero(e.target.value)}/>
               </div>
               <div className="form-group">
                   <label htmlFor="password" className="label">Senha:</label>

@@ -3,9 +3,9 @@ const User = require('../models/User');
 
 router.post('/signup', async (req, res) => {
     try {
-        console.log("teste");
-        const { name, email, password } = req.body;
-        const user = new User({ name, email, password });
+        console.log("signup");
+        const { name, email, password, cellPhone} = req.body;
+        const user = new User({ name, email, password, cellPhone });
         await user.save();
         res.json({ user: user._id });
     } catch (error) {
@@ -15,6 +15,7 @@ router.post('/signup', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     try {
+        console.log("login");
         const { email, password } = req.body;
         const user = await User.findOne({ email: email });
             if (!user) {

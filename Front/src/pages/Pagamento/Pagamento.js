@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useStore from '../../Components/Store/Store';
 import './Pagamento.css';
+import { toast } from "react-toastify";
 import TelaVazia from '../TelaVazia/TelaVazia';
 
 const EnderecoSalvo = ({ descricao, endereco, estado, cep, onClick, isSelected }) => {
@@ -43,6 +44,7 @@ const Pagamento = () => {
   const [showAddressSection, setShowAddressSection] = useState(false);
   const [showPaymentSection, setShowPaymentSection] = useState(false);
   const [showNewAddressForm, setShowNewAddressForm] = useState(false);
+  const [showNewPaymentForm, setShowNewPaymentForm] = useState(false);
   const [paymentOption, setPaymentOption] = useState('- Selecionar -');
   const [selectedEndereco, setSelectedEndereco] = useState(null);
   const [showSelectedEndereco, setShowSelectedEndereco] = useState(false);
@@ -50,6 +52,14 @@ const Pagamento = () => {
   const location = useLocation();
   const totalValue = location.state.totalValue;
   const limparCarrinho = useStore(state => state.limparCarrinho);
+  const [rua, setRua] = useState('');
+  const [numero, setNumero] = useState('');
+  const [complemento, setComplemento] = useState('');
+  const [bairro, setBairro] = useState('');
+  const [numeroc, setNumeroc] = useState('');
+  const [nome, setNome] = useState('');
+  const [codigo, setCodigo] = useState('');
+  const [data, setData] = useState('');
 
   const handleSelectEndereco = (descricao) => {
     setSelectedEndereco(descricao);
@@ -88,6 +98,12 @@ const Pagamento = () => {
     setShowNewAddressForm(!showNewAddressForm);
     setShowAddressSection(false);
   };
+
+  const handleAdicionarNovaFormaPagamento = () => {
+    setShowNewPaymentForm(!showNewPaymentForm);
+    setShowPaymentSection(false);
+  };
+  
 
   const renderEnderecosSalvos = () => {
     return enderecosSalvos.map((endereco, index) => (
@@ -163,14 +179,30 @@ const Pagamento = () => {
     );
   };
 
+  const handleNewAdress = (e) => {
+    e.preventDefault();
+    let newAddress = {neighborhood:bairro, street:rua, number:numero, complement:complemento};
+    console.log(newAddress);
+    fetch("http://localhost:3000/address/signup", {
+      method: "POST",
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(newAddress)
+    }).then((res) => {
+      toast.success('Endereço adicionado com sucesso.')
+    }).catch((err) => {
+      toast.error('Erro :' + err.message);
+    });
+  }
+
+
   const renderNewAddressForm = () => {
     return (
       <div className="new-address-form">
-        <form>
-          <input type="text" placeholder="Bairro" />
-          <input type="text" placeholder="Rua" />
-          <input type="text" placeholder="Número" />
-          <input type="text" placeholder="Complemento (Opcional)" />
+        <form onSubmit={handleNewAdress}> 
+          <input type="text" id='bairro' required="required" placeholder="Bairro" value={bairro} onChange={e => setBairro(e.target.value)} />
+          <input type="text" id='rua' required="required" placeholder="Rua" value={rua} onChange={e => setRua(e.target.value)} />
+          <input type="text" id='numero' required="required" placeholder="Número" value={numero} onChange={e => setNumero(e.target.value)} />
+          <input type="text" id='complemento' placeholder="Complemento (Opcional)" value={complemento} onChange={e => setComplemento(e.target.value)} />
           <button type="submit">Adicionar Endereço</button>
         </form>
       </div>
@@ -201,7 +233,41 @@ const Pagamento = () => {
               </ul>
             </div>
           )}
+          {!showNewPaymentForm && (
+            <button onClick={handleAdicionarNovaFormaPagamento}>
+               Cartão de Crédito
+            </button>
+          )}
         </div>
+      </div>
+    );
+  };
+
+  const handleNewPayment = (e) => {
+    e.preventDefault();
+    let newPayment = {cardNumber:numeroc, name:nome, validate:data, cvv:codigo};
+    console.log(newPayment);
+    fetch("http://localhost:3000/card/signup", {
+      method: "POST",
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(newPayment)
+    }).then((res) => {
+      toast.success('Cartão adicionado com sucesso.')
+    }).catch((err) => {
+      toast.error('Erro :' + err.message);
+    });
+  }
+
+  const renderNewPaymentForm = () => {
+    return (
+      <div className="new-address-form">
+        <form onSubmit={handleNewPayment}> 
+          <input type="number" maxLength="16" id='numeroc' required="required" placeholder="Número do Cartão" value={numeroc} onChange={e => setNumeroc(e.target.value)} />
+          <input type="text" id='nome' placeholder="Nome" value={nome} onChange={e => setNome(e.target.value)} />
+          <input type="month" id='data' required="required" placeholder="Validade" value={data} onChange={e => setData(e.target.value)} />
+          <input type="text" id='codigo' maxLength="3" required="required" placeholder="Código" value={codigo} onChange={e => setCodigo(e.target.value)} />
+          <button type="submit">Adicionar Cartão</button>
+        </form>
       </div>
     );
   };
@@ -238,6 +304,7 @@ const Pagamento = () => {
 
       <div className="right-section">
         {renderPaymentSection()}
+        {showNewPaymentForm && renderNewPaymentForm()}
       </div>
 
       <div className="buttons-container-outer">
