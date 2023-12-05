@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import useStore from '../../Components/Store/Store';
 import './Carrinho.css';
 import CustomButton from '../../Components/CustomButton/CustomButton';
@@ -6,10 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 function Carrinho() {
-  const tamanhoSelecionado = useStore((state) => state.tamanhoSelecionado);
-  const saborSelecionado = useStore((state) => state.saborSelecionado);
   const ingredientesSelecionados = useStore((state) => state.ingredientesSelecionados);
-  const saboresData = useStore((state) => state.saboresData);
   const orders = useStore((state) => state.orders);
   const limparCarrinho = useStore(state => state.limparCarrinho);
   const deleteOrder = useStore(state => state.deleteOrder);
@@ -74,7 +70,6 @@ const submitOrders = (e) => {
   const precoIngredientes = calcularPrecoIngredientes();
 
   const handleContinuarComprando = () => {
-    limparCarrinho();
     navigate('/tamanhos');
   };
 

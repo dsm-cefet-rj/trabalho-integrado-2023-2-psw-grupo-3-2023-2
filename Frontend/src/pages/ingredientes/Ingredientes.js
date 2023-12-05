@@ -1,19 +1,15 @@
-import React, { useEffect } from 'react';
 import './Ingredientes.css';
 import { ingredientesData } from '../../data/IngredientesData'; // Certifique-se de importar o objeto ingredientesData
 import IngredientButton from '../../Components/IngredientButton/IngredientButton';
 import CustomButton from '../../Components/CustomButton/CustomButton';
 import useStore from '../../Components/Store/Store';
 import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function IngredientesPizza() {
   const ingredientesSelecionados = useStore((state) => state.ingredientesSelecionados);
   const setIngredientesSelecionados = useStore((state) => state.setIngredientesSelecionados);
-  const tamanhoSelecionado = useStore((state) => state.tamanhoSelecionado);
-  const atual = useStore((state) => state.addOrder);
   const navigate = useNavigate();
 
   const handleConfirmar = () => {

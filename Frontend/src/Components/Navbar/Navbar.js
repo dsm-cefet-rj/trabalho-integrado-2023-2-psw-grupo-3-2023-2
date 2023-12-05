@@ -11,6 +11,11 @@ const Navbar = () => {
             </NavLink>
             <ul className={styles.links_list}>
                 <li>
+                    <NavLink to="/" className={styles.item}  >
+                        Home
+                    </NavLink>
+                </li>
+                <li>
                     <NavLink to="/login" className={styles.item}  >
                         Entrar
                     </NavLink>
