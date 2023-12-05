@@ -13,4 +13,13 @@ router.post('/signup', async (req, res) => {
     }
     });
 
+router.get('/list', async (req, res) => {
+    try {
+        const address = await Address.find();
+        res.json({ address });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+    });
+
     module.exports = router;

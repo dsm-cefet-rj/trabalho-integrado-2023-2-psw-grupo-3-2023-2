@@ -4,8 +4,8 @@ const Card = require('../models/Card');
 router.post('/signup', async (req, res) => {
     try {
         console.log("card");
-        const { name, cardNumber, validate, cvv } = req.body;
-        const card = new Card({ name, cardNumber, validate, cvv });
+        const { name, cardNumber, date, cvv } = req.body;
+        const card = new Card({ name, cardNumber, date, cvv });
         await card.save();
         res.json({ card: card._id });
     } catch (error) {

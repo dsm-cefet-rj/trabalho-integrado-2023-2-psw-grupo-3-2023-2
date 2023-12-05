@@ -33,4 +33,14 @@ router.post('/login', async (req, res) => {
     }
     });
 
+router.get('/list', async (req, res) => {
+    try {
+        console.log("list");
+        const user = await User.find();
+        res.json({ user });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+    });
+
     module.exports = router;

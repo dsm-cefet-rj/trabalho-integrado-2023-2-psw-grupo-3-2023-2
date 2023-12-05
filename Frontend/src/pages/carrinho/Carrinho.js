@@ -3,6 +3,7 @@ import useStore from '../../Components/Store/Store';
 import './Carrinho.css';
 import CustomButton from '../../Components/CustomButton/CustomButton';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function Carrinho() {
   const tamanhoSelecionado = useStore((state) => state.tamanhoSelecionado);
@@ -28,7 +29,7 @@ function Carrinho() {
     return 0;
   };
 
-  const handlePagamento = () => {
+  const handlePagamento = (e) => {
     if (!orders.length) {
       alert("No orders to process.");
       return;
@@ -41,8 +42,24 @@ function Carrinho() {
     }, 0);
 
     // Navigate to the Pagamento component and pass the total value
+    submitOrders(e);
     navigate('/pagamento', { state: { totalValue } });
   };
+
+const submitOrders = (e) => {
+  e.preventDefault(); 
+  let ordersobj = {orders};
+  console.log(ordersobj);
+      fetch('http://localhost:3000/order/product', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(ordersobj)
+      }).then((res) => {
+          toast.success('Aguardando pagamento...');
+      }).catch((err) => {
+          console.error('Erro:', err);
+      });
+};
 
   if (orders.length === 0) {
     return (
@@ -53,19 +70,13 @@ function Carrinho() {
     );
   }
 
-  // const sabor = saboresData.find((sabor) => sabor.id === saborSelecionado.id);
-
-  // if (!sabor) {
-  //   return (
-  //     <div className="page-containerC">
-  //       <h1>Carrinho</h1>
-  //       <p>Sabor selecionado não encontrado.</p>
-  //     </div>
-  //   );
-  // }
-
   const precoTotal = useStore.getState().calcularPrecoTotal();
   const precoIngredientes = calcularPrecoIngredientes();
+
+  const handleContinuarComprando = () => {
+    limparCarrinho();
+    navigate('/tamanhos');
+  };
 
   // Calcular o preço total incluindo tamanho, sabor e ingredientes
   const precoFinal = precoTotal + precoIngredientes;
@@ -101,7 +112,8 @@ function Carrinho() {
 
 
       <div className="button-container">
-      <CustomButton onClick={limparCarrinho}>Limpar Carrinho</CustomButton>
+        <CustomButton onClick={handleContinuarComprando}>Continuar Comprando</CustomButton>
+        <CustomButton onClick={limparCarrinho}>Limpar Carrinho</CustomButton>
         <CustomButton onClick={handlePagamento} className="button">Seguir para o Pagamento</CustomButton>
       </div>
     </div>

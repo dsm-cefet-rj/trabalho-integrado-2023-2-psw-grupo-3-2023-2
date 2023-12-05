@@ -25,6 +25,9 @@ app.use("/address", addressRoutes);
 const cardRoutes = require('./routes/cardRoutes');
 app.use("/card", cardRoutes);
 
+const orderRoutes = require('./routes/orderRoutes');
+app.use("/order", orderRoutes);
+
 mongoose.connect('mongodb+srv://victorbonilha:Ga4RVWVwaQ6vBCmM@pizzaria.yr0hvt9.mongodb.net/?retryWrites=true&w=majority')
 .then(() => {
     app.listen(3000, () => {

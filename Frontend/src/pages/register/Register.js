@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useStore } from 'react';
 import { useNavigate } from 'react-router-dom'
 import "./Register.css"
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
 const Register = () => {
-  
+
   const [id, setId] = useState("");
   const [nome, setNome ] = useState("");
   const [email, setEmail ] = useState("");

@@ -11,11 +11,6 @@ const Navbar = () => {
             </NavLink>
             <ul className={styles.links_list}>
                 <li>
-                    <NavLink to="/tamanhos" className={styles.item} >
-                        Cardápio
-                    </NavLink>
-                </li>
-                <li>
                     <NavLink to="/login" className={styles.item}  >
                         Entrar
                     </NavLink>

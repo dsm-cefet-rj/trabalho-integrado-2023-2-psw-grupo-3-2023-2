@@ -80,6 +80,7 @@ const Pagamento = () => {
 
   const handleToggleOptions = () => {
     setShowPaymentSection(!showPaymentSection);
+    setShowNewPaymentForm(false);
   };
 
   const handlePaymentOptionSelect = (option) => {
@@ -209,7 +210,11 @@ const Pagamento = () => {
     );
   };
 
-  const paymentOptions = ['Cartão', 'Dinheiro'];
+  const handleVoltarPay = () => {
+    setShowNewPaymentForm(false);
+  };
+
+  const paymentOptions = ['Cartão (Pagar na Entrega)', 'Dinheiro'];
 
   const renderPaymentSection = () => {
     return (
@@ -238,6 +243,11 @@ const Pagamento = () => {
                Cartão de Crédito
             </button>
           )}
+          {showNewPaymentForm && (
+            <button onClick={handleVoltarPay} className="action-button">
+              Voltar
+            </button>
+          )}
         </div>
       </div>
     );
@@ -245,7 +255,7 @@ const Pagamento = () => {
 
   const handleNewPayment = (e) => {
     e.preventDefault();
-    let newPayment = {cardNumber:numeroc, name:nome, validate:data, cvv:codigo};
+    let newPayment = {cardNumber:numeroc, name:nome, validate:data, cvv:codigo, value:totalValue};
     console.log(newPayment);
     fetch("http://localhost:3000/card/signup", {
       method: "POST",
@@ -286,6 +296,10 @@ const Pagamento = () => {
     navigate('/tela-vazia');
   };
 
+  const handleVoltarCar = () => {
+    navigate('/carrinho');
+  };
+
   const isPagarButtonDisabled = !selectedEndereco || paymentOption === '- Selecionar -';
 
   return (
@@ -311,6 +325,9 @@ const Pagamento = () => {
         <div className="buttons-container">
           <button onClick={handlePagar} disabled={isPagarButtonDisabled}>
             Pagar
+          </button>
+          <button onClick={handleVoltarCar}>
+            Voltar
           </button>
         </div>
       </div>
