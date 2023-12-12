@@ -1,19 +1,11 @@
 const mongoose = require('mongoose');
+const Flavor = require('./Flavor');
+const Ingredient = require('./Ingredient');
 
 const order = mongoose.model('Order', {
-    orders: [
-        {
-            tamanho: String,
-            sabor: String,
-            ingredientes: [
-                {
-                    id: String,
-                    nome: String,
-                    valor: Number,
-                },
-            ],
-        },
-    ]
+     tamanho: String,
+     sabor: { type: mongoose.Schema.Types.ObjectId, ref: 'Flavor' },
+     ingredientes: { type: mongoose.Schema.Types.ObjectId, ref: 'Ingredient' },
 });
 
 module.exports = order;

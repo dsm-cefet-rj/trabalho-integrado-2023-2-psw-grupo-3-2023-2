@@ -28,9 +28,15 @@ app.use("/card", cardRoutes);
 const orderRoutes = require('./routes/orderRoutes');
 app.use("/order", orderRoutes);
 
+const flavorRoutes = require('./routes/flavorRoutes');
+app.use("/flavor", flavorRoutes);
+
+const ingredientRoutes = require('./routes/ingredientRoutes');
+app.use("/ingredient", ingredientRoutes);
+
 mongoose.connect('mongodb+srv://victorbonilha:Ga4RVWVwaQ6vBCmM@pizzaria.yr0hvt9.mongodb.net/?retryWrites=true&w=majority')
 .then(() => {
-    app.listen(3000, () => {
+    app.listen(3001, () => {
         console.log('Conectado ao Mongo');
     });
 })

@@ -5,12 +5,9 @@ import TamanhoPizza from './Components/TamanhoPizza/TamanhoPizza';
 import SaboresPizza from './Components/SaboresPizza/SaboresPizza';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
-import PizzaButton from './Components/PizzaButton/PizzaButton';
-import BaseLayout from './Layout/BaseLayout/BaseLayout'
 import Carrinho from './pages/carrinho/Carrinho';
 import Ingredientes from './pages/ingredientes/Ingredientes'
 import Home from './pages/home/Home';
-import PizzasData from './data/PizzasData'
 import Footer from './Components/Footer/footer';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

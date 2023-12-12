@@ -43,18 +43,24 @@ function Carrinho() {
   };
 
 const submitOrders = (e) => {
-  e.preventDefault(); 
+  e.preventDefault();
   let ordersobj = {orders};
-  console.log(ordersobj);
-      fetch('http://localhost:3000/order/product', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(ordersobj)
-      }).then((res) => {
-          toast.success('Aguardando pagamento...');
-      }).catch((err) => {
-          console.error('Erro:', err);
-      });
+  ordersobj.orders.forEach(element => {
+    let o = JSON.stringify(({
+      tamanho: element.tamanho,
+      sabor: element.sabor._id,
+      ingredientes: element.ingredientes.map(ingrediente => ingrediente._id)
+  }))
+    fetch('http://localhost:3001/order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: o
+    }).then((res) => {
+        toast.success('Pizza salva com sucesso!');
+    }).catch((err) => {
+        console.error('Erro:', err);
+    });
+  });
 };
 
   if (orders.length === 0) {
@@ -69,7 +75,7 @@ const submitOrders = (e) => {
   const precoTotal = useStore.getState().calcularPrecoTotal();
   const precoIngredientes = calcularPrecoIngredientes();
 
-  const handleContinuarComprando = () => {
+  const handleContinuarComprando = (e) => {
     navigate('/tamanhos');
   };
 

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import './sabores.css';
-import { saboresData } from '../../data/PizzasData';
 import PizzaButton from '../PizzaButton/PizzaButton';
 import CustomButton from '../CustomButton/CustomButton';
 import useStore from '../Store/Store';
@@ -14,12 +13,15 @@ function SaboresPizza() {
   const limpar = useStore(state => state.limpar);
   const navigate = useNavigate();
   const addOrder = useStore((state) => state.addOrder);
+  const saboresData = useStore((state) => state.saboresData);
+
 
   const handleConfirmar = () => {
     if(!saborSelecionado) {
       toast.error("Selecione um sabor");
     }
     else{
+    console.log(saborSelecionado);
     addOrder();
     limpar();
     navigate('/carrinho');
@@ -27,7 +29,20 @@ function SaboresPizza() {
   };
 
   useEffect(() => {
-    useStore.setState({ saboresData: saboresData });
+    fetch('http://localhost:3001/flavor', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+    })
+    .then((res) => res.json())
+    .then((data) => {
+        console.log(data);
+        useStore.setState({ saboresData: data.flavor });
+        console.log(saboresData);
+    })
+    .catch((err) => {
+        console.error('Erro:', err);
+    });
+    
   }, []);
 
   const handleClickPizza = (sabor) => {
@@ -37,6 +52,10 @@ function SaboresPizza() {
       setSelectedSabor(sabor);
     }
   };
+
+  if (saboresData.length === 0) {
+    return <div>Carregando...</div>;
+  }
 
   return (
     <div className="page-containerS">

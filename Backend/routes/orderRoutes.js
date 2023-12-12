@@ -1,11 +1,11 @@
 const router = require('express').Router();
 const Order = require('../models/Order');
 
-router.post('/signup', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         console.log("order");
-        const { orders: orderData } = req.body;
-        const order = new Order({ orders: orderData });
+        const { tamanho, sabor, ingredientes } = req.body;
+        const order = new Order({ tamanho, sabor, ingredientes });
         await order.save();
         res.json({ order: order._id });
     } catch (error) {

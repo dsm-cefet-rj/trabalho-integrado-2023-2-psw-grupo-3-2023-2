@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import useStore from '../../Components/Store/Store';
 import './Pagamento.css';
 import { toast } from "react-toastify";
-import TelaVazia from '../TelaVazia/TelaVazia';
 
 const EnderecoSalvo = ({ descricao, endereco, estado, cep, onClick, isSelected }) => {
   const handleOnClick = () => {
